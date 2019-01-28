@@ -23,7 +23,7 @@ if($read['defaulted'] >= 3){
     echo $page_title;
   }else{
   ?>
-  BoardSpeck
+Arthut
 <?php } ?>
 </title>
   <!-- <script type="text/javascript" src="/assets/ckeditor5-build-classic/ckeditor.js"></script> -->
@@ -105,7 +105,7 @@ if($read['defaulted'] >= 3){
           <li><a href="manageNews">Manage News</a></li>
           <li><a href="manageInsights">Manage Article</a></li>
            <li><a href="addProfile">Update Profile</a></li>
- 
+
 
           <li> <a href="logout">Logout</a></li>
         <?php }elseif($level == 4){ ?>
@@ -155,27 +155,28 @@ if($read['defaulted'] >= 3){
            <li> <a href="logout">Logout</a></li>
         <?php }else{ ?>
           <li><a href="admin">Home</a></li>
-          <li><a href="contents">Contents</a></li>
-          <li><a href="addArticle">Add Article</a></li>
+          <!-- <li><a href="contents">Contents</a></li> -->
+          <!-- <li><a href="addArticle">Add Article</a></li> -->
           <li><a href="addNews">Add News</a></li>
-          <li><a href="addInsight">Add Insight</a></li>
+          <li><a href="addInsight">Add Content</a></li>
           <li><a href="manageNews">Manage News</a></li>
-          <li><a href="manageArticles">Manage Articles</a></li>
-          <li><a href="manageInsights">Manage Insights</a></li>
-           
+          <!-- <li><a href="manageArticles">Manage Articles</a></li> -->
+          <li><a href="manageInsights">Manage Content</a></li>
+
           <?php $check2 = adminFullInfo($conn,$_SESSION['id']);
           if($check2['portfolio'] == 555666777888999000){
             ?>
+            <li><a href="content">Manage Content</a></li>
             <li><a href="manageViews">Manage Views</a></li>
-            <li><a href="insightCategory">Add More Insights Category</a></li>
-            <li><a href="newsCategory">Add More News Category</a></li>
+            <li><a href="insightCategory">Add More Categories</a></li>
+            <!--<li><a href="newsCategory">Add More News Categories</a></li>-->
            <!--  <li><a href="campus">Add More Campus</a></li> -->
-            <li><a href="addAbout">Add About Us</a></li>
-            <li><a href="manageAbout">About Us</a></li>
-            <li><a href="viewUsers">Manage Users</a></li>
-            <li><a href="clients">Clients Users</a></li>
-            <li><a href="addProfile">Update Profile</a></li>
-            <li><a href="log">Log</a></li>
+            <!-- <li><a href="addAbout">Add About Us</a></li> -->
+            <!-- <li><a href="manageAbout">About Us</a></li> -->
+            <!-- <li><a href="viewUsers">Manage Users</a></li> -->
+            <!-- <li><a href="clients">Clients Users</a></li> -->
+            <!-- <li><a href="addProfile">Update Profile</a></li> -->
+            <!-- <li><a href="log">Log</a></li> -->
           <?php } ?>
           <li> <a href="logout">Logout</a></li>
         <?php } ?>

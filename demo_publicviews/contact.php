@@ -1,151 +1,122 @@
-<?php 
+<?php
 ob_start();
 $page_title = "Contact Us";
+$page_name = "Contact Us";
 include "includes/header2.php";
-$data = "blog";
-$info2 = data2($conn, $data);
+// $data = "blog";
+// $info2 = data2($conn, $data);
+
+
+if(array_key_exists("submit", $_POST)){
+  $email = $_POST['email'];
+  $name = $_POST['name'];
+  $message = $_POST['comment']. " **********The email to this message is $email*********";
+
+//   $to = "arthutng@gmail.com";
+//   $subject = "Message From $name to ARTHUT";
+//   $txt = $message. "the email to this message is $email";
+//   $headers = "From: $email" . "\r\n" .
+//   "CC: banjimayowa@gmail.com";
+
+
+
+
+ require_once "Mail.php"; // PEAR Mail package
+require_once ('Mail/mime.php'); // PEAR Mail_Mime packge
+
+
+ 
+
+
+
+
+ $from = "contact@arthut.com.ng"; //enter your email address
+ $to = "arthutng@gmail.com,banjimayowa@gmail.com"; //enter the email address of the contact your sending to
+ $subject = "Message From $name to ARTHUT"; // subject of your email
+
+$headers = array ('From' => $from,'To' => $to, 'Subject' => $subject);
+
+$text = $message; // text versions of email.
+// $html = "<html><body>Name: $name <br> Email: $email <br>Message: $message <br></body></html>"; // html versions of email.
+
+$crlf = "\n";
+
+$mime = new Mail_mime($crlf);
+$mime->setTXTBody($text);
+// $mime->setHTMLBody($html);
+
+//do not ever try to call these lines in reverse order
+$body = $mime->get();
+$headers = $mime->headers($headers);
+
+ $host = "localhost"; // all scripts must use localhost
+ $username = "contact@arthut.com.ng"; //  your email address (same as webmail username)
+ $password = "ArthutNg@.02"; // your password (same as webmail password)
+
+$smtp = Mail::factory('smtp', array ('host' => $host, 'auth' => true,
+'username' => $username,'password' => $password));
+
+$mail = $smtp->send($to, $headers, $body);
+
+$msg = [];
+
+if (PEAR::isError($mail)) {
+ $msg['failed'] = "<p>" . $mail->getMessage() . "</p>";
+}
+else {
+ $msg['done'] = "Message Successfullly Sent"; 
+// header("Location: http://www.example.com/");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+}
  ?>
-	
+
 </div>
 <!-- technology -->
 <div class="technology-1">
 	<div class="container">
-		<div class="col-md-9 technology-left">
+		<div class="col-md-9 mx-auto" >
 			<div class="business">
+			    <?php if(isset($msg['done'])){ ?>
+                  <div class="well" style="width:100%; background-color:white; border:2px solid purple; padding:15px">
+                    <?php echo $msg['done'] ?>
+                  </div>
+                <?php } ?>
+
 				<div id="contact" class="contact">
-						<h3>Contact</h3>		
+				    
+						<h3>Send Your Message</h3>
 					 <div class="contact-grids">
-						 <div class="contact-icons">
-								<div class="contact-grid">
-									<div class="contact-fig">
-										<span class="glyphicon glyphicon-phone-alt" aria-hidden="true"></span>
-									</div>
-									<p>555-222-333</p>
-								</div>
-								<div class="contact-grid">
-									<div class="contact-fig1">
-										<span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-									</div>
-									<p>T317 Timber Oak Drive
-										<span>Sundown,TX 79372</span></p>
-								</div>
-								<div class="contact-grid">
-									<div class="contact-fig2">
-										<span class="glyphicon glyphicon-envelope2" aria-hidden="true"></span>
-									</div>
-									<p><a href="mailto:info@example.com">example@mail.com</a></p>
-								</div>
-								<div class="clearfix"> </div>
-							 </div>
-							 <form>
-								<input type="text" placeholder="Name">
-								<input type="text" placeholder="Email">
-								<input type="text" placeholder="Website">
-								<textarea placeholder="Message..."></textarea>
-								<input type="submit" value="SEND">
+						 
+							 <form method="post" action="">
+								<input type="text" placeholder="Name" name="name">
+								<input type="text" placeholder="Email" name="email">
+								<!--<input type="text" placeholder="Website">-->
+								<textarea placeholder="Message..." name="comment"></textarea>
+								<input type="submit" name="submit" value="SEND">
 							 </form>
-							 </div>			 
-					 <div class="map">
-							<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12386182.960956775!2d-74.08302114251626!3d40.71866701702417!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2sin!4v1436524193425"  style="border:0" allowfullscreen></iframe>
-						</div>
+							 </div>
+
 				</div>
 			</div>
 		</div>
 	<!-- technology-right -->
-		<div class="col-md-3 technology-right-1">
-				<div class="blo-top">
-					<div class="tech-btm">
-					<img src="images/banner1.jpg" class="img-responsive" alt=""/>
-					</div>
-				</div>
-				<div class="blo-top">
-					<div class="tech-btm">
-					<h4>Sign up to our newsletter</h4>
-					<p>Pellentesque dui, non felis. Maecenas male</p>
-						<div class="name">
-							<form>
-								<input type="text" placeholder="Email" required="">
-							</form>
-						</div>	
-						<div class="button">
-							<form>
-								<input type="submit" value="Subscribe">
-							</form>
-						</div>
-							<div class="clearfix"> </div>
-					</div>
-				</div>
-				
-				<div class="blo-top1">
-					<div class="tech-btm">
-					<h4>Latest stories of the week </h4>
-					<?php 
-					foreach ($info2 as $key => $value) {
-						extract($value);
-						 $bd = previewBody($body, 20);
-				 ?>
-						<div class="blog-grids">
-							<div class="blog-grid-left">
-									<a <?php echo 'href=viewBlog?hid='.$hash_id.'&data='.$data.''; ?>>  <div style="background:url(<?php echo $image_1; ?>); height:100px; width: 100px; background-size: cover; background-position: center; background-repeat: no-repeat;" class="img-responsive"></div></a>
-								<!-- <a href="singlepage.html"><img src="images/6.jpg" class="img-responsive" alt=""/></a> -->
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a <?php echo 'href=viewBlog?hid='.$hash_id.'&data='.$data.''; ?>><?php echo $title; ?></a></h5>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<?php } ?>
-
-			<!-- 			<div class="blog-grids">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/7.jpg" class="img-responsive" alt=""/></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="blog-grids">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/11.jpg" class="img-responsive" alt=""/></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="blog-grids">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/9.jpg" class="img-responsive" alt=""/></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="blog-grids">
-							<div class="blog-grid-left">
-								<a href="singlepage.html"><img src="images/10.jpg" class="img-responsive" alt=""/></a>
-							</div>
-							<div class="blog-grid-right">
-								
-								<h5><a href="singlepage.html">Pellentesque dui, non felis. Maecenas male</a> </h5>
-							</div>
-							<div class="clearfix"> </div>
-						</div> -->
-					</div>
-				</div>
-			
-		</div>
 		<div class="clearfix"></div>
 		<!-- technology-right -->
 	</div>
 </div>
 <!-- technology -->
-<?php 
+<?php
 include "includes/footer.php";
  ?>

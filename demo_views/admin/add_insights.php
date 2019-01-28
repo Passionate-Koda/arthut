@@ -49,7 +49,7 @@ if(array_key_exists('submit', $_POST)){
 
 
   if(empty($error)){
-    $_POST['vivibility'] = "hide";
+    $_POST['visibility'] = "hide";
     $ver['a'] = compressImage($_FILES,'upload',90, 'uploads/' );
 
     $clean = array_map('trim', $_POST);
@@ -62,7 +62,7 @@ if(array_key_exists('submit', $_POST)){
      $txt = "Hello Admin, ($firstn $lastn)has added a content on "."$url"." page at Arthut. Kindly check for and approval";
      $headers = "From: info@boardspeck.com" . "\r\n" .
      "CC: banjimayowa@gmail.com";
-     mail($to,$subject,$txt,$headers);
+    //  mail($to,$subject,$txt,$headers);
     addInsight($conn, $clean,$ver,$hash_id);
   }
 }

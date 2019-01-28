@@ -1,7 +1,7 @@
 <?php
-     define("DBNAME", 'blog');
-     define("DBUSER", 'root');
-     define("DBPASS", 'dre');
+     define("DBNAME", 'arthutco_blog');
+     define("DBUSER", 'arthutco_admin');
+     define("DBPASS", 'Arthut@.02.com');
 
          try{
 

@@ -11,6 +11,114 @@ function getInsight($dbconn){
     echo '<option value="'.$package_list.'">'.$package_list.'</option>';
   }
 }
+
+
+function appDetail($db,$get){
+  $stmt= $db->prepare("SELECT * FROM submit WHERE id=:id");
+  $stmt -> bindParam(":id", $get['id']);
+  $stmt->execute();
+  while($record = $stmt->fetch(PDO::FETCH_BOTH)){
+    return $record;
+  }
+}
+
+function deleteApp($db, $get){
+  $gt = appDetail($db, $get);
+  extract($gt);
+  $app = $application;
+  $cv = $cv;
+
+
+  $stmt= $db->prepare("DELETE FROM submit WHERE id=:id");
+
+  $stmt -> bindParam(":id", $get['id']);
+
+  $stmt->execute();
+  if(file_exists($app)){
+    unlink($app);
+  }
+  if(file_exists($cv)){
+    unlink($cv);
+  }
+  $success = "Done";
+
+
+header("Location:viewApplication?success=$success");
+
+}
+
+function getApplication($dbconn){
+  //   $nl = "NULL";
+  $stmt = $dbconn->prepare("SELECT * FROM submit");
+  //   $stmt->bindParam(":ms", $ms);
+  //   $stmt->bindValue(":nl", NULL);
+
+  $stmt->execute();
+  while($row = $stmt->fetch(PDO::FETCH_BOTH)){
+    extract($row);
+
+    echo '
+    <tr>
+    <td class="ads-details-td">
+    <h3><a href="ads-details.html">'.ucwords($name).'</a></h3>
+
+
+    <p><strong> Social Media</strong>:
+    <a href="tel:'.$phone_number.'">'.$phone_number.'<a/></p>
+    <p><strong>Email</strong> <a target="_blank" href="mailto:'.$email.'">'.$email.'</a></p>
+    </td>
+
+    <td class="ads-details-td">
+    <a href="'.$application.'"><button class="btn btn-common btn-sm" type="submit">Content</button></a>
+    </td>
+    <td class="ads-details-td">
+    <a href="'.$cv.'"><button class="btn btn-common btn-sm" type="submit">Image</button></a>
+    </td>
+    <td class="price-td">
+    <a href="delete_app?id='.$id.'">
+    <button class="btn btn-danger btn-sm" type="submit">Delete</button>
+    </a>
+    </td>
+    </tr>';
+  }
+}
+
+function uploadFiles($input, $name, $upDIR){
+  $result = [];
+
+  $rnd = rand(0000000, 9999999);
+  $strip_name = str_replace(" ", "_", $input[$name]['name']);
+
+  $filename= $rnd.$strip_name;
+  $destination = $upDIR.$filename;
+
+  if(!move_uploaded_file($input[$name]['tmp_name'], $destination)){
+    $result[] = false;
+
+}else{
+    $result[] = true;
+    $result[] = $destination;
+}
+return $result;
+}
+
+
+function addApplication($dbconn,$post,$destn){
+
+  try{
+  $stmt = $dbconn->prepare("INSERT INTO submit VALUES(NULL, :nam,:pn,:email,:app,:cv,NOW(),NOW())");
+  $data = [
+    ':nam' => $post['name'],
+    ':pn' => $post['phonenumber'],
+    ':email' => $post['email'],
+    ':app' => $destn['a'],
+    ':cv' => $destn['b']
+  ];
+  $stmt->execute($data);
+}catch(PDOException $e){
+  die("Something Went Wrong");
+}
+}
 function getEntityCategoryAdmin($dbconn,$tb,$nm,$gid){
   $stmt = $dbconn->prepare("SELECT $nm FROM $tb WHERE hash_id=:gid");
   $stmt->bindParam(":gid", $gid);
@@ -18,6 +126,23 @@ function getEntityCategoryAdmin($dbconn,$tb,$nm,$gid){
   $nm = $stmt->fetch(PDO::FETCH_BOTH);
   return $nm;
 }
+
+function viewFrontage($db){
+
+  $stmt= $db->prepare("SELECT * FROM frontage");
+
+  $stmt->execute();
+
+
+  while($record = $stmt->fetch()){
+    echo "<tr>";
+    echo "<td>".$record['header_title']."</td>";
+    echo "<td>".$record['text']."</td>";
+    echo "<td><div style='width:150px; height:100px; background:url(".$record['image']."); background-size: cover; background-position: center; background-repeat: no-repeat;'></div></td>";
+    echo "</tr>";
+  }
+}
+
 function getNewsCateg($dbconn){
   $stmt = $dbconn->prepare("SELECT * FROM news_category");
   $stmt->execute();
@@ -153,8 +278,9 @@ function workRate($dbconn,$id){
 }
 
 function compressImage($files, $name, $quality, $upDIR ) {
+// die(var_dump($files[$name]['type']));
   $rnd = rand(0000000, 9999999);
-  $strip_name = str_replace(" ", "_", $_FILES[$name]['name']);
+  $strip_name = str_replace(" ", "_", $files[$name]['name']);
   $filename = $rnd.$strip_name;
   $destination_url = $upDIR.$filename;
   $info = getimagesize($files[$name]['tmp_name']);
@@ -164,25 +290,43 @@ function compressImage($files, $name, $quality, $upDIR ) {
   $image = imagecreatefromgif($files[$name]['tmp_name']);
   elseif ($info['mime'] == 'image/png')
   $image = imagecreatefrompng($files[$name]['tmp_name']);
+
+$range1 = 100000;
+
+$range2 = 500000;
+
+$range3 = 1000000;
+
+  if($files[$name]['size'] >= 0  && $files[$name]['size'] <= $range1 ){
+    $quality = 100;
+  }elseif($files[$name]['size'] >= $range1  && $files[$name]['size'] <= $range2 ){
+      $quality = 90;
+  }elseif ($files[$name]['size'] >= $range2  && $files[$name]['size'] <= $range3) {
+  $quality =  70;
+  }else{
+  $quality =  20;
+  }
+
   imagejpeg($image, $destination_url, $quality);
   return $destination_url;
 }
 
 
 function addFrontage($dbconn,$post,$destination,$sess){
+  $id = 1;
   try{
-  $stmt = $dbconn->prepare("INSERT INTO frontage VALUES(NULL, :ht,:txt,:img,NOW(),NOW(),:sess)");
+  $stmt = $dbconn->prepare("UPDATE frontage SET header_title =:ht, text =:txt, image= :img WHERE id =:id");
   $data = [
     ':ht' => $post['header_title'],
     ':txt' => $post['txt'],
-    ':img' => $destination,
-    ':sess' => $sess
+    ':id' => $id,
+    ':img' => $destination
+    // ':sess' => $sess
   ];
   $stmt->execute($data);
-}
-catch(PDOException $e){
-  die("Something Went Wrong");
-
+}catch(PDOException $e){
+  // die("Something Went Wrong");
+  die($e);
 }
   $success = "Frontage Info Added";
   $succ = preg_replace('/\s+/', '_', $success);
@@ -311,8 +455,8 @@ catch(PDOException $e){
   logs($dbconn, 'added', $post['title'],'insight',$sess);
   $success = "Insight Post Uploaded";
   $succ = preg_replace('/\s+/', '_', $success);
-   workRate($dbconn,$sess);
-  header("Location:/manageInsights?success=$succ");
+//   workRate($dbconn,$sess);
+  header("Location:manageInsights?success=$succ");
 }
 function addNews($dbconn,$post,$destn, $sess){
 try{
@@ -343,7 +487,7 @@ catch(PDOException $e){
   logs($dbconn, 'added', $post['title'],'news',$sess);
   $success = "News Post Uploaded";
   $succ = preg_replace('/\s+/', '_', $success);
-  workRate($dbconn,$sess);
+//   workRate($dbconn,$sess);
   header("Location:/manageNews?success=$succ");
 }
 function addCampusNews($dbconn,$post,$destn, $sess){

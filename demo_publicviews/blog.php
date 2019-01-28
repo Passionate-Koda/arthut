@@ -1,6 +1,7 @@
 <?php
 ob_start();
 $page_title = "Blog";
+$page_name = "Blog";
 include "includes/header2.php";
 $record_per_page = 6;
 $page = "";
@@ -180,30 +181,14 @@ if($page > 1){
 		<div class="col-md-3 technology-right-1">
 				<div class="blo-top">
 					<div class="tech-btm">
-					<img src="images/banner1.jpg" class="img-responsive" alt=""/>
-					</div>
-				</div>
-				<div class="blo-top">
-					<div class="tech-btm">
-					<h4>Sign up to our newsletter</h4>
-					<p>Pellentesque dui, non felis. Maecenas male</p>
-						<div class="name">
-							<form>
-								<input type="text" placeholder="Email" required="">
-							</form>
-						</div>
-						<div class="button">
-							<form>
-								<input type="submit" value="Subscribe">
-							</form>
-						</div>
-							<div class="clearfix"> </div>
+					<!-- <img src="images/banner1.jpg" class="img-responsive" alt=""/> -->
 					</div>
 				</div>
 
+
 				<div class="blo-top1">
 					<div class="tech-btm">
-					<h4>Latest stories of the week </h4>
+					<h4>Latest</h4>
 					<?php
 					foreach ($info2 as $key => $value) {
 						extract($value);
@@ -275,7 +260,7 @@ if($page > 1){
 				<div class="blo-top1">
 					<div class="tech-btm">
 					<h4>Latest Tweets </h4>
-				<a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/Ptech4rice?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				<a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/arthutng?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 					</div>
 				</div>
 

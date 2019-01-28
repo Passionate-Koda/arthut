@@ -1,7 +1,8 @@
 <?php
 ob_start();
 $page_title = "View Content";
-include "includes/header2.php";
+$page_name = "blog_view";
+
  if (isset($_GET['hid']) && isset($_GET['data'])) {
  		$hid = $_GET['hid'];
  		 $data = $_GET['data'];
@@ -17,7 +18,98 @@ include "includes/header2.php";
  		}
 
  }
+ include "includes/header2.php";
  ?>
+ <style media="screen">
+   .fblinka{
+     display: inline-block;
+       width: 40px;
+       height: 40px;
+       /* padding:3px; */
+       line-height: 37px;
+       text-align: center;
+       background-color: #3B5998;
+       color: #fff;
+       border-radius: 50%;
+       margin-bottom: 10px;
+       border: 2px solid transparent;
+       font-size: 15px;
+       position: relative;
+             margin: 10px;
+   }
+   .fblinka:hover{
+     background-color: #fff;
+     color: #3B5998;
+       border: 2px solid #3B5998;
+         margin-top: 20px;
+   }
+   .twlinka{
+     display: inline-block;
+       width: 40px;
+       height: 40px;
+			        /*padding:11px;*/
+       line-height: 37px;
+       text-align: center;
+       background-color: #00ACED;
+       color: #fff;
+       border-radius: 50%;
+       margin-bottom: 10px;
+       border: 2px solid transparent;
+       font-size: 15px;
+       position: relative;
+             margin: 10px;
+   }
+   .twlinka:hover{
+     background-color: #fff;
+     color: #00ACED;
+       border: 2px solid #00ACED;
+         margin-top: 20px;
+   }
+   .inlinka{
+     display: inline-block;
+       width: 40px;
+       height: 40px;
+       line-height: 37px;
+       text-align: center;
+       background-color: #0077B5;
+       color: #fff;
+			        /*padding:11px;*/
+       border-radius: 50%;
+       margin-bottom: 10px;
+       border: 2px solid transparent;
+       font-size: 15px;
+       position: relative;
+             margin: 10px;
+   }
+   .inlinka:hover{
+     background-color: #fff;
+     color: #0077B5;
+       border: 2px solid #0077B5;
+         margin-top: 20px;
+   }
+   .whlinka{
+     display: inline-block;
+       width: 40px;
+       height: 40px;
+       line-height: 37px;
+       text-align: center;
+       background-color: #27C34B;
+       color: #fff;
+       border-radius: 50%;
+			        /*padding:11px;*/
+       border: 2px solid transparent;
+       font-size: 15px;
+       position: relative;
+       margin: 10px;
+   }
+   .whlinka:hover{
+     background-color: #fff;
+     color: #27C34B;
+       border: 2px solid #27C34B;
+             margin-top: 20px;
+   }
+ }
+ </style>
 
 <!-- technology -->
 <div class="technology-1">
@@ -38,67 +130,19 @@ include "includes/header2.php";
 					<div class="blog-poast-info">
 					</div>
 						<p><?php echo $body; ?> </p>
+						  <div style="margin-top:5px;" class="">
+                  <p style="margin-bottom:2px">Share this with friends</p>
+                <?php  $uro = $_SERVER['REQUEST_URI'];
+                 ?>
+                    <a href="#" id="blake" class="fblinka" ><i class="fa fa-facebook"></i></a>
+                    <?php $ur = urlencode("https://arthut.com.ng/viewBlog?hid=".$_GET['hid']."&data=".$_GET['data'].""); ?>
+                    <a target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo $ur  ?>"  class="inlinka" ><i class="fa fa-linkedin"></i></a>
 
-					</div>
-				</div>
-				<div class="comment-top">
-						<h2>Comment</h2>
-						<div class="media-left">
-						  <a href="#">
-							<img src="images/si.png" alt="">
-						  </a>
-						</div>
-					<div class="media-body">
-						  <h4 class="media-heading">Richard Spark</h4>
-						  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-					  <!-- Nested media object -->
-						<div class="media">
-							<div class="media-left">
-							  <a href="#">
-								<img src="images/si.png" alt="">
-							  </a>
-						 </div>
-							<div class="media-body">
-						  <h4 class="media-heading">Joseph Goh</h4>
-						  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-						  <!-- Nested media object -->
-						  <div class="media">
-							<div class="media-left">
-							  <a href="#">
-								<img src="images/si.png" alt="">
-								 </a>
-							</div>
-							<div class="media-body">
-							  <h4 class="media-heading">Melinda Dee</h4>
-						  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-							</div>
-						  </div>
-						</div>
-					</div>
-				  <!-- Nested media object -->
-					  <div class="media">
-						<div class="media-left">
-						  <a href="#">
-							<img src="images/si.png" alt="">
-						  </a>
-						</div>
-						<div class="media-body">
-						  <h4 class="media-heading">Rackham</h4>
-						  <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin commodo. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.</p>
-						</div>
-					  </div>
-					</div>
-				</div>
-				<div class="comment">
-					<h3>Leave a Comment</h3>
-					<div class=" comment-bottom">
-						<form>
-							<input type="text" placeholder="Name">
-							<input type="text" placeholder="Email">
-							<input type="text" placeholder="Subject">
-							<textarea placeholder="Message" required=""></textarea>
-							<input type="submit" value="Send">
-						</form>
+                    <a target="_blank" href="https://twitter.com/share?url=<?php echo $ur ?>&text=<?php echo "Arthut - ".strtoupper($title)?>&hashtags=arthut"  class="twlinka twitter-share" ><i class="fa fa-twitter"></i></a>
+                    <a href='whatsapp://send?text=<?php echo "Arthut - ".strtoupper($title)." ".$ur ?> ' data-action="share/whatsapp/share"  class="whlinka" ><i class="fa fa-whatsapp"></i></a>
+                </div>
+                    <div class="fb-comments" data-mobile="true" data-href="https://arthut.com.ng/viewBlog?hid=<?php echo $_GET['hid'] ?>&data=blog" data-width="100%" data-numposts="10"></div>
+
 					</div>
 				</div>
 			</div>
@@ -106,32 +150,12 @@ include "includes/header2.php";
 
 		<!-- technology-right -->
 	<div class="col-md-3 technology-right-1">
-				<div class="blo-top">
-					<div class="tech-btm">
-					<img src="images/banner1.jpg" class="img-responsive" alt=""/>
-					</div>
-				</div>
-				<div class="blo-top">
-					<div class="tech-btm">
-					<h4>Sign up to our newsletter</h4>
-					<p>Pellentesque dui, non felis. Maecenas male</p>
-						<div class="name">
-							<form>
-								<input type="text" placeholder="Email" required="">
-							</form>
-						</div>
-						<div class="button">
-							<form>
-								<input type="submit" value="Subscribe">
-							</form>
-						</div>
-							<div class="clearfix"> </div>
-					</div>
-				</div>
+
+
 
 				<div class="blo-top1">
 					<div class="tech-btm">
-					<h4>Latest stories of the week </h4>
+					<h4>Latest</h4>
 					<?php
 					$headline = "";
 					foreach ($info2 as $key => $value) {
@@ -204,7 +228,7 @@ include "includes/header2.php";
 				<div class="blo-top1">
 					<div class="tech-btm">
 					<h4>Latest Tweets </h4>
-				<a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/Ptech4rice?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+				<a class="twitter-timeline" data-tweet-limit="3" href="https://twitter.com/arthutng?ref_src=twsrc%5Etfw">Tweets by TwitterDev</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 					</div>
 				</div>
 
@@ -217,3 +241,13 @@ include "includes/header2.php";
 <?php
 include "includes/footer.php";
  ?>
+  <script type="text/javascript">
+    document.getElementById('blake').onclick = function(e){
+      FB.ui({
+        method: 'share',
+    display: 'popup',
+        href: 'https://arthut.com.ng/viewBlog?hid=<?php echo $_GET['hid'] ?>&data=<?php echo $_GET['data'] ?>',
+      }, function(response){});
+      e.preventDefault();
+    }
+    </script>

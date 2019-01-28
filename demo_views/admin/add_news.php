@@ -29,10 +29,12 @@ if(array_key_exists('submit', $_POST)){
   if(empty($_POST['body'])){
     $error['body']="Enter a body";
   }
-  if(empty($_POST['visibility'])){
-    $error['visibility']="Enter a Visibility";
-  }
+  // if(empty($_POST['visibility'])){
+  //   $error['visibility']="Enter a Visibility";
+  // }
   if(empty($error)){
+    $_POST['visibility'] = "hide";
+    $_POST['category'] = "none";
     $ver['a'] = compressImage($_FILES,'upload',90, 'uploads/' );
     $clean = array_map('trim', $_POST);
     $firstn = $fname;
@@ -84,17 +86,7 @@ echo $display ?> <input class="form-control input-md" name="title" placeholder="
 <label class="control-label">Author</label><?php $display = displayErrors($error, 'author');
 echo $display ?> <input class="form-control input-md" name="link" placeholder="Enter News Author here"  type="text">
 </div>
-<div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
-<div class="input-group-addon search-category-container">
-<label class="control-labell">News Category </label>  <?php $display = displayErrors($error, 'visibility');
-echo $display ?><br><select class="dropdown-product selectpicker" name="category" required>
-<option value="">
---Select--
-</option>
-<?php getNewsCateg($conn) ?>
-</select>
-</div>
-</div>
+
 <br>
 <br>
 <br>
@@ -105,16 +97,6 @@ echo $display ?>
 <textarea class="form-control"  id="editor1" name="body" placeholder="Write your article here" rows="4"></textarea>
 </div>
   <br/>
-  <div class="col-md-4 col-sm-4 col-xs-12 search-bar search-bar-nostyle">
-<div class="input-group-addon search-category-container">
-<label class="control-labell">VISIBILITY </label>  <?php $display = displayErrors($error, 'visibility');
-  echo $display ?><br><select class="dropdown-product selectpicker" name="visibility">
-<option value="hide">
---Admin Decision--
-</option>
-</select>
-</div>
-</div>
 <br/>
 <br/>
 <br/>

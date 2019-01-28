@@ -5,24 +5,14 @@
 				<p>ArtHut is a digital home for all arts.</p>
 				<p>We create a platform for budding and developed artists of all kind to showcase the story and voice in their heads.</p>
 			</div>
-			<div class="col-md-4 footer-middle">
-			<h4>Twitter Feed</h4>
-			<div class="mid-btm">
-				<p>Consectetur adipisicing</p>
-				<p>Sed do eiusmod tempor</p>
-				<a href="https://w3layouts.com/">https://w3layouts.com/</a>
-			</div>
 
-				<p></p>
-				<p>Sed do eiusmod tempor</p>
-				<a href="https:/mckodev.com.ng">https://Mckodev</a>
-
-			</div>
 			<div class="col-md-4 footer-right">
 				<h4>Quick Links</h4>
-				<li><a href="index">Home</a></li>
-				<li><a href="about">About Us</a></li>
-				<li><a href="news">News</a></li>
+				<li class="active"><a href="index">Home</a></li>
+			<li class=""><a href="blog?data=insight">Blog</a></li>
+			<li class=""><a href="submit">Submit</a></li>
+			<li class=""><a href="contact">Contact</a></li>
+			<li class=""><a href="blog?data=news">News</a></li>
 
 			</div>
 			<div class="clearfix"></div>
@@ -47,10 +37,24 @@
 <!-- footer-bottom -->
 			<div class="copyright">
 				<div class="container">
-					<p>© 2018 Arthut.| Powered by <a href="http://mckodev.com.ng">Mckodev</a></p>
+					<p>© <?php   $date = getdate(date("U")); echo $date['year'] ?> Arthut.| Powered by <a href="http://mckodev.com.ng">Mckodev</a></p>
 				</div>
 			</div>
-
+<script>window.twttr = (function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0],
+  t = window.twttr || {};
+  if (d.getElementById(id)) return t;
+  js = d.createElement(s);
+  js.id = id;
+  js.src = "https://platform.twitter.com/widgets.js";
+  fjs.parentNode.insertBefore(js, fjs);
+  t._e = [];
+  t.ready = function(f) {
+    t._e.push(f);
+  };
+  return t;
+}(document, "script", "twitter-wjs"));</script>
 
 </body>
 </html>
+

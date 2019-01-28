@@ -7,19 +7,104 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title> Blog| <?php echo $page_title; ?></title>
+<title> Arthut| <?php echo $page_title; ?></title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Business_Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+	 <?php if($page_title !="bb"){ ?>
+		 <title>Arthut - <?php echo $page_title ?></title>
+	 <?php } ?>
+		 <meta name="description" content="">
+		 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+
+		 <?php if($page_name == "home"){
+			 echo '<title>'.$page_title.'</title>
+			 <meta name="description" content="ArtHut is a digital home for all arts. We create a platform for budding and developed artists of all kind to showcase the story and voice in their heads.">';
+
+		 }elseif($page_name == "blog_view"){
+			 // die(var_dump($blog));
+			 $bd = previewBody($body, 22);
+			 $rf = strip_tags($bd);
+			 $cut = explode(' ',$title);
+			 $metakeys = implode(',',$cut).",";
+			 echo '<title>Arthut - '.ucwords($title).'</title>
+			 <meta name="description" content="'.$rf.'" />
+			 <meta name="title" content="'.ucwords($title).'">
+			 <meta name="keywords" content="'.$metakeys.'blog,arthut">';
+		 }else{
+			 echo '<title>'.ucwords($page_title).'</title>
+			 <meta name="description" content="ArtHut is a digital home for all arts. We create a platform for budding and developed artists of all kind to showcase the story and voice in their heads.">
+			 <meta name="title" content="'.ucwords($page_title).'">
+			 <meta name="keywords" content="arthut, blog">';
+			 }
+
+			 $uri = explode("/", $_SERVER['REQUEST_URI']);
+				if($page_name == "home"){
+					echo '<meta property="og:title" content="Arthut - Home" />
+					<meta property="og:image" content="images/log.png" />
+					<meta property="og:image:width" content="450"/>
+					<meta property="og:image:height" content="298"/>
+					<meta property="og:description" content="ArtHut is a digital home for all arts. We create a platform for budding and developed artists of all kind to showcase the story and voice in their heads." />';
+					echo '<meta name="twitter:card" content="summary_large_image">
+					<meta name="twitter:site" content="@arthutng">
+					<meta name="twitter:title" content="Arthut - Home">
+					<meta name="twitter:description" content="ArtHut is a digital home for all arts. We create a platform for budding and developed artists of all kind to showcase the story and voice in their heads.">
+					<meta name="twitter:image" content="images/log.png">
+					<meta name="twitter:image:width" content="280">
+					<meta name="twitter:image:height" content="150">';
+				}elseif($page_name == "blog_view"){
+					 $bd = previewBody($body, 22);
+					$rf = strip_tags($bd);
+					echo '<meta property="og:title" content="Arthut - '.$title.'" />
+					<meta property="og:type" content="article" />
+					<meta property="og:image" content="https://arthut.com.ng/'.$image_1.'" />
+					<meta property="og:image:width" content="450"/>
+					<meta property="og:image:height" content="298"/>
+					<meta property="og:description" content="'.$rf.'" />';
+					echo '<meta name="twitter:card" content="summary_large_image">
+					<meta name="twitter:site" content="@arthutng">
+					<meta name="twitter:title" content="Arthut - '.$title.'">
+					<meta name="twitter:description" content="'.$rf.'">
+					<meta name="twitter:image" content="https://arthut.com.ng/'.$image_1.'">
+					<meta name="twitter:image:width" content="280">
+					<meta name="twitter:image:height" content="150">';
+				}else{
+					echo '<meta property="og:title" content="arthut" />
+					<meta property="og:image" content="https://arthut.com.ng/images/log.png" />
+					<meta property="og:image:width" content="200"/>
+					<meta property="og:image:height" content="200"/>
+					<meta property="og:description" content="ArtHut is a digital home for all arts. We create a platform for budding and developed artists of all kind to showcase the story and voice in their heads." />';
+					echo '<meta name="twitter:card" content="summary" />
+					<meta name="twitter:site" content="@arthutng" />
+					<meta name="twitter:title" content="arthut" />
+					<meta name="twitter:description" content="ArtHut is a digital home for all arts. We create a platform for budding and developed artists of all kind to showcase the story and voice in their heads.">
+					<meta name="twitter:image" content="https://arthut.com.ng/images/log.png" />';
+				}
+ ?>
 <script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <link href="css/bootstrap.css" rel='stylesheet' type='text/css' />
 <!-- Custom Theme files -->
 <link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700' rel='stylesheet' type='text/css'>
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 <link href='//fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
 <link href="css/style.css" rel='stylesheet' type='text/css' />
+ 	<!-- Global site tag (gtag.js) - Google Analytics -->
+ 	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-131077668-1"></script>
+ 	<script>
+ 	window.dataLayer = window.dataLayer || [];
+ 	function gtag(){dataLayer.push(arguments);}
+ 	gtag('js', new Date());
+ 	gtag('config', 'UA-131077668-1');
+ </script>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+	<script>(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+		js = d.createElement(s); js.id = id;
+		js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v3.0&appId=1419655161498658&autoLogAppEvents=1';
+		fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
 </head>
 <body>
 	<!--start-main-->
@@ -30,14 +115,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="index.html"> <img src="images/logo.png" width="100" height="50" alt=""> </a>
                         </div>
 
-						<div class="social">
+						<div style="width:50%" class="social">
 							<ul>
-								<li><a href="#" class="facebook"> </a></li>
-								<li><a href="#" class="facebook twitter"> </a></li>
-								<li><a href="#" class="facebook chrome"> </a></li>
-								<li><a href="#" class="facebook in"> </a></li>
-
-								<li><a href="#" class="facebook yout"> </a></li>
+								<li><a href="https://facebook.com/arthutng" class="facebook"> </a></li>
+								<li><a href="https://twitter.com/arthutng" class="facebook twitter"> </a></li>
 							</ul>
 						</div>
 						<div class="clearfix"></div>
@@ -69,20 +150,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								 <?php } ?>
 										</ul>
 									</li>
-									<li class=""><a href="contact">Submit</a></li>
-
-									<li class=""><a href="contact">About Us</a></li>
-
-            <li class="dropdown">
-              <a <?php echo 'href=blog?data=news'; ?> class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">News <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-              	<?php foreach ($news_sub as $key => $value) {
-              		extract($value);
-              	?>
-              <li><a <?php echo 'href=blog?hid='.$hash_id.'&data=news'; ?>><?php echo $news_category; ?> </a></li>
-              <?php  } ?>
-              </ul>
-            </li>
+									
+									<li class=""><a href="submit">Submit</a></li>
+									<li class=""><a href="contact">Contact</a></li>
+								<li class=""><a href="blog?data=news">News</a></li>
 
             <!-- <li class=""><a href="contact">Contact</a></li> -->
           </ul>
@@ -93,6 +164,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!--head-bottom-->
 </div>
 <!-- banner -->
-<div class="banner1">
 
-</div>

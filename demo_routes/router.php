@@ -298,6 +298,18 @@ switch ($uri[1]) {
 
   case "admin":
   include APP_PATH."/demo_views/admin/admin_home.php";
+  break; 
+  
+  case "content":
+  include APP_PATH."/demo_views/admin/view_application.php";
+  break;
+  
+  case "delete_app?id=$id":
+  include APP_PATH."/demo_views/admin/delete_application.php";
+  break;  
+  
+  case "viewApplication?success=$success":
+  include APP_PATH."/demo_views/admin/view_application.php";
   break;
 
   case "admin?wn=$wn":
@@ -370,6 +382,10 @@ switch ($uri[1]) {
 
 
 
+  case "":
+  include APP_PATH."/demo_publicviews/index.php";
+  break;  
+  
   case "index":
   include APP_PATH."/demo_publicviews/index.php";
   break;
@@ -405,6 +421,9 @@ switch ($uri[1]) {
 
   case "contact":
   include APP_PATH."/demo_publicviews/contact.php";
+  break;
+  case "submit":
+  include APP_PATH."/demo_publicviews/submit.php";
   break;
 }
 
