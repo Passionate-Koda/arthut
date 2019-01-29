@@ -1,6 +1,6 @@
 <?php
-define("DB_PATH", dirname(dirname(__FILE__)));
-include DB_PATH."/demo_models/model.php";
+// define("DB_PATH", dirname(dirname(__FILE__)));
+
 function getInsight($dbconn){
   $cat = "Topic";
   $stmt = $dbconn->prepare("SELECT * FROM package WHERE package_name = :id");
