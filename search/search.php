@@ -13,6 +13,7 @@ if($tb == ""){
 }
 
 if($tb == 'blog'){
+  $tb = 'arthutco_blog';
 
 $stmt = $conn->prepare("SELECT * FROM $tb WHERE title LIKE :key OR body LIKE :key ");
 $bindKey = "%".$key."%";
