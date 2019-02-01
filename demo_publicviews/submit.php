@@ -6,9 +6,9 @@ include "includes/header2.php";
 // $data = "blog";
 // $info2 = data2($conn, $data);
 
-
+$error = [];
 if(array_key_exists('submit', $_POST)){
-  $ext = ["application/vnd.openxmlformats-officedocument.wordprocessingml.document"];  
+  $ext = ["application/vnd.openxmlformats-officedocument.wordprocessingml.document"];
   $ext2 = ["image/jpg", "image/JPG", "image/jpeg", "image/JPEG", "image/PNG", "image/png"];
   if(empty($_FILES['upload']['name'])){
     $error['upload'] = "Please choose file";
@@ -17,7 +17,7 @@ if(array_key_exists('submit', $_POST)){
     $error['upload'] = "Invalid file type, Please Upload a .docx(Microsoft Word Document File) ";
   }
 
-  
+
   if(empty($_POST['name'])){
     $error['name']="Enter a fullname";
   }
@@ -39,7 +39,7 @@ if(array_key_exists('submit', $_POST)){
       $destn['b'] = $verb;
 
       $clean = array_map('trim', $_POST);
-     
+
     //   $headers = "MIME-Version: 1.0" . "\r\n";
     //   $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
     //   $headers .= "From: <$email>" . "\r\n";
@@ -59,7 +59,7 @@ if(array_key_exists('submit', $_POST)){
 require_once ('Mail/mime.php'); // PEAR Mail_Mime packge
 
 
- 
+
 
 
 
@@ -98,7 +98,7 @@ if (PEAR::isError($mail)) {
  $msg['failed'] = "<p>" . $mail->getMessage() . "</p>";
 }
 else {
- $msg['done'] = "Message Successfullly Sent"; 
+ $msg['done'] = "Message Successfullly Sent";
 // header("Location: http://www.example.com/");
 }
 
@@ -129,7 +129,7 @@ else {
 						<div class="contact-form text-center">
 							<h3>SUBMIT PAGE
 </h3>
-						
+
  							<form method="post" action="" enctype="multipart/form-data">
 	                            <div class="row">
 	                                <div class="col-sm-12">
@@ -162,7 +162,7 @@ else {
                                          <input required type="file" name="upload" class="form-control"  placeholder="Attach Your File">
                                      </div>
                                  </div>
-                           
+
 	                                <div class="col-sm-12">
 	                                    <div class="full-width submit-btn">
 	                                        <input value="Submit" name="submit"  type="submit">
@@ -199,8 +199,8 @@ else {
 
 
 
-FOR VISUALS: 
- 
+FOR VISUALS:
+
 <p>Kindly send your works as a mail to arthutng@gmail.com via the format below</p>
 
 <li>Artist's name</li>

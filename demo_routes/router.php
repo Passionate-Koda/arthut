@@ -85,6 +85,9 @@ switch ($uri[1]) {
 //   case "":
 // include APP_PATH."/demo_views/admin/admin_home.php";
 //   break;
+case "search":
+include APP_PATH."/search/search.php";
+break;
 
   case "adminHome":
   include APP_PATH."/demo_views/admin/admin_home.php";
@@ -98,7 +101,7 @@ switch ($uri[1]) {
   case "addInsight":
   include APP_PATH."/demo_views/admin/add_insights.php";
   break;
-  
+
   case "contents":
   include APP_PATH."/demo_views/admin/content.php";
   break;
@@ -298,16 +301,16 @@ switch ($uri[1]) {
 
   case "admin":
   include APP_PATH."/demo_views/admin/admin_home.php";
-  break; 
-  
+  break;
+
   case "content":
   include APP_PATH."/demo_views/admin/view_application.php";
   break;
-  
+
   case "delete_app?id=$id":
   include APP_PATH."/demo_views/admin/delete_application.php";
-  break;  
-  
+  break;
+
   case "viewApplication?success=$success":
   include APP_PATH."/demo_views/admin/view_application.php";
   break;
@@ -384,8 +387,8 @@ switch ($uri[1]) {
 
   case "":
   include APP_PATH."/demo_publicviews/index.php";
-  break;  
-  
+  break;
+
   case "index":
   include APP_PATH."/demo_publicviews/index.php";
   break;

@@ -1,3 +1,4 @@
+<?php include 'search-plugin/search-plugin.php'; ?>
 <div class="footer">
 		<div class="container">
 			<div class="col-md-4 footer-left">
@@ -57,4 +58,3 @@
 
 </body>
 </html>
-

@@ -117,8 +117,12 @@
 
 						<div style="width:50%" class="social">
 							<ul>
-								<li><a href="https://facebook.com/arthutng" class="facebook"> </a></li>
+								<li><a href="https://facebook.com/arthutnig" class="facebook"> </a></li>
 								<li><a href="https://twitter.com/arthutng" class="facebook twitter"> </a></li>
+								<!-- <li><a href="https://" class="instagram"> </a></li> -->
+								<li><a href="https://linkedIn.com/company/arthutng " class="facebook in"> </a></li>
+
+								<li><a href="https://tinyurl.com/ArtHut " class="facebook yout"> </a></li>
 							</ul>
 						</div>
 						<div class="clearfix"></div>
@@ -150,10 +154,13 @@
 								 <?php } ?>
 										</ul>
 									</li>
-									
+
 									<li class=""><a href="submit">Submit</a></li>
 									<li class=""><a href="contact">Contact</a></li>
 								<li class=""><a href="blog?data=news">News</a></li>
+								<li >
+										 <a style="color:white" data-toggle="modal" href="#search-box"> <i class="fa fa-search"></i> </a>
+									 </li>
 
             <!-- <li class=""><a href="contact">Contact</a></li> -->
           </ul>
@@ -164,4 +171,3 @@
 <!--head-bottom-->
 </div>
 <!-- banner -->
-
