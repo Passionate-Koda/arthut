@@ -27,7 +27,7 @@ $stmt->bindParam(":key",$bindKey);
   // $post = cleans($title);
         echo '<div class="item">
         <div class="item-content" style="margin-left:0px">
-        <h2 style="font-size:30px"><a target="_blank" href="/viewBlog?hid='.$hash_id.'&data=blog">'.strtoupper($title).'</a></h2>
+        <h2 style="font-size:30px"><a target="_blank" href="/viewBlog?hid='.$hash_id.'&data=insight">'.strtoupper($title).'</a></h2>
         <span style="width:30%;float:left;" class="item-meta">
           <img src="/'.$image_1.'" width="100" height="100">
         </span>
