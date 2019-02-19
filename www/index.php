@@ -1,5 +1,9 @@
 <?php
-
+if(isset($_GET['fbclid'])){
+  $urr  = $_SERVER['REQUEST_URI'];
+  $fb_strip = explode('&fbclid', $urr);
+  header("location:".'https://'.$_SERVER['HTTP_HOST'].$fb_strip[0]);
+}
 #Define App Path
 define("APP_PATH", dirname(dirname(__FILE__)));
 #load database
