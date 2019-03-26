@@ -3,7 +3,7 @@ ob_start();
 $page_title = "Blog";
 $page_name = "Blog";
 include "includes/header2.php";
-$record_per_page = 6;
+$record_per_page = 30;
 $page = "";
 if (isset($_GET['page'])) {
 	$page = $_GET['page'];
