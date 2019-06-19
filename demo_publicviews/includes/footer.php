@@ -1,7 +1,7 @@
 <?php include 'search-plugin/search-plugin.php'; ?>
 <div class="footer">
 		<div class="container">
-			<iframe src="https://www.alternativeadvert.com/show.php?z=30&pl=18451&ad_type=57&rl=1800" width="728" height="90" marginwidth="0" marginheight="0" hspace="0" vspace="0" frameborder="0" scrolling="no"></iframe>
+
 			<div class="col-md-4 footer-left">
 				<h6>About Us</h6>
 				<p>ArtHut is a digital home for all arts.</p>
