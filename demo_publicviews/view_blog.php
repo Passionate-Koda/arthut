@@ -139,7 +139,7 @@ $page_name = "blog_view";
                     <?php $ur = urlencode("https://arthut.com.ng/viewBlog?hid=".$_GET['hid']."&data=".$_GET['data'].""); ?>
                     <a target="_blank" href="https://www.linkedin.com/sharing/share-offsite/?url=<?php echo $ur  ?>"  class="inlinka" ><i class="fa fa-linkedin"></i></a>
 
-                    <a target="_blank" href="https://twitter.com/share?url=<?php echo $urll ?>&text=<?php echo "Arthut - ".strtoupper($title)?>&hashtags=arthut"  class="twlinka twitter-share" ><i class="fa fa-twitter"></i></a>
+                    <a target="_blank" href="https://twitter.com/share?url=<?php echo $ur ?>&text=<?php echo "Arthut - ".strtoupper($title)?>&hashtags=arthut"  class="twlinka twitter-share" ><i class="fa fa-twitter"></i></a>
                     <a href='whatsapp://send?text=<?php echo "Arthut - ".strtoupper($title)." ".$urll ?> ' data-action="share/whatsapp/share"  class="whlinka" ><i class="fa fa-whatsapp"></i></a>
                 </div>
                     <div class="fb-comments" data-mobile="true" data-href="https://arthut.com.ng/viewBlog?hid=<?php echo $_GET['hid'] ?>&data=insight" data-width="100%" data-numposts="10"></div>
