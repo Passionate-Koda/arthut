@@ -30,6 +30,7 @@ Arthut
   <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
   <link rel="shortcut icon" href="assets/img/favicon.png">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
+      <link rel="stylesheet" href="/admc/css/datatables.min.css">
   <link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/material-kit.css" type="text/css">

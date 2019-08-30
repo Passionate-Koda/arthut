@@ -49,7 +49,8 @@ $lname = ucwords($lastname);
 <h2 class="title-2"><i class="fa fa-star-o"></i> Manage Articles</h2>
 <br>
 <div class="table-responsive">
-<table class="table table-striped table-bordered add-manage-table">
+<table  id="simpletable" class="table table-striped table-bordered add-manage-table">
+<thead>
   <tr>
     <th>Article Info</th>
     <th>Body</th>
@@ -61,6 +62,7 @@ $lname = ucwords($lastname);
     <th>Delete</th>
     <th>Set Visibility</th>
   </tr>
+</thead>
 <tbody>
 
 <?php
@@ -182,6 +184,17 @@ her
 </tr> -->
 
 </tbody>
+<tr>
+  <th>Article Info</th>
+  <th>Body</th>
+  <th>Image(Click to change)</th>
+  <th>Created By</th>
+  <th>Date Uploaded</th>
+  <th>Visibility</th>
+  <th>Edit</th>
+  <th>Delete</th>
+  <th>Set Visibility</th>
+</tr>
 </table>
 </div>
 
@@ -193,6 +206,8 @@ her
 
 
 <script type="text/javascript" src="assets/js/jquery-min.js"></script>
+<script src="/admc/js/datatables.min.js"></script>
+<script src="/admc/js/data-basic-custom.js"></script>
 <script type="text/javascript" src="assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="assets/js/material.min.js"></script>
 <script type="text/javascript" src="assets/js/material-kit.js"></script>
