@@ -2531,7 +2531,7 @@ function getInsightView($dbconn,$get){
       </td>
       <td class="add-img-td">
       <a href="editImage?id='.$hash_id.'&t=insight">
-      <img class="img-responsive" src="'.$image_1.'">
+      Change Image
       </a>
       </td>
       <td class="add-img-td">
@@ -2573,7 +2573,7 @@ function getInsightView($dbconn,$get){
       </td>
       <td class="add-img-td">
       <a href="editImage?id='.$hash_id.'&t=blog">
-      <img class="img-responsive" src="'.$image_1.'">
+        Change Image
       </a>
       </td>
       <td class="add-img-td">
@@ -2608,7 +2608,7 @@ function getInsightView($dbconn,$get){
       </td>
       <td class="add-img-td">
       <a href="#">
-      <img class="img-responsive" src="'.$image_1.'">
+      Change Image
       </a>
       </td>
       <td class="add-img-td">
@@ -2653,7 +2653,7 @@ function PgetInsightView($dbconn,$get){
       </td>
       <td class="add-img-td">
       <a href="editImage?id='.$hash_id.'&t=insight">
-      <img class="img-responsive" src="'.$image_1.'">
+      Change Image
       </a>
       </td>
       <td class="add-img-td">
@@ -2695,7 +2695,7 @@ function PgetInsightView($dbconn,$get){
       </td>
       <td class="add-img-td">
       <a href="editImage?id='.$hash_id.'&t=blog">
-      <img class="img-responsive" src="'.$image_1.'">
+      Change Image
       </a>
       </td>
       <td class="add-img-td">
@@ -2730,7 +2730,7 @@ function PgetInsightView($dbconn,$get){
       </td>
       <td class="add-img-td">
       <a href="#">
-      <img class="img-responsive" src="'.$image_1.'">
+      Change Image
       </a>
       </td>
       <td class="add-img-td">
