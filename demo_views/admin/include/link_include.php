@@ -30,7 +30,7 @@ Arthut
   <script type="text/javascript" src="/ckeditor/ckeditor.js"></script>
   <link rel="shortcut icon" href="assets/img/favicon.png">
   <link rel="stylesheet" href="assets/css/bootstrap.min.css" type="text/css">
-      <link rel="stylesheet" href="/admc/css/datatables.min.css">
+      <link rel="stylesheet" href="/admc/css/datatables.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/jasny-bootstrap.min.css" type="text/css">
   <link rel="stylesheet" href="assets/css/material-kit.css" type="text/css">
@@ -70,7 +70,7 @@ Arthut
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand logo" href="#"><img src="assets/img/logo3.jpg" alt=""></a>
+          <a class="navbar-brand logo" href="#"><img src="/assets/img/logo3.jpg" alt=""></a>
         </div>
         <div class="collapse navbar-collapse" id="navbar">
           <ul class="nav navbar-nav navbar-right">
